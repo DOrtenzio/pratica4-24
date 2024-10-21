@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #78bf81; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pratica3324.HelloController">
+   <children>
+      <Label layoutX="15.0" layoutY="14.0" prefHeight="29.0" prefWidth="507.0" text="GESTORE SQUADRA DI CALCIO:" />
+       <Button layoutX="14.0" layoutY="54.0" mnemonicParsing="false" onAction="#inserisciGioc" prefHeight="38.0" prefWidth="276.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Aggiungi Giocatore" />
+       <Button layoutX="456.0" layoutY="54.0" mnemonicParsing="false" onAction="#vediCapitano" prefHeight="38.0" prefWidth="132.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Chi è il tuo capitano?" />
+       <Button layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="38.0" prefWidth="276.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
+       <Button layoutX="15.0" layoutY="171.0" mnemonicParsing="false" onAction="#modificaGioc" prefHeight="38.0" prefWidth="276.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Modifica i dati di un giocatore" />
+       <Button layoutX="312.0" layoutY="172.0" mnemonicParsing="false" onAction="#cancellaGiocatore" prefHeight="38.0" prefWidth="276.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Cancella un giocatore" />
+       <Button layoutX="312.0" layoutY="111.0" mnemonicParsing="false" onAction="#vediGioc5Gol" prefHeight="38.0" prefWidth="276.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori con + di 5 gol" />
+      <VBox layoutX="15.0" layoutY="225.0" prefHeight="168.0" prefWidth="574.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 20px;">
+         <children>
+            <Label fx:id="labelIn" alignment="CENTER" prefHeight="22.0" prefWidth="569.0" text="Label Iniziale" />
+            <Pane prefHeight="21.0" prefWidth="574.0" />
+            <ScrollPane prefHeight="132.0" prefWidth="574.0" style="-fx-background-color:#FFFFFF;">
+               <content>
+                  <VBox fx:id="insertBox" prefHeight="125.0" prefWidth="567.0" style="-fx-background-color:#FFFFFF;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <Button layoutX="312.0" layoutY="54.0" mnemonicParsing="false" onAction="#capitanoCasuale" prefHeight="38.0" prefWidth="132.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Capitano casuale" />
+   </children>
+</AnchorPane>
