@@ -12,7 +12,7 @@
          </font></Label>
       <Button layoutX="14.0" layoutY="54.0" mnemonicParsing="false" onAction="#inserisciGioc" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Aggiungi Giocatore" />
       <Button layoutX="464.0" layoutY="54.0" mnemonicParsing="false" onAction="#vediCapitano" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi capitano" />
-      <Button layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
+      <Button layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#goToVediGiocatori" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
       <Button layoutX="15.0" layoutY="219.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="..." />
       <Button layoutX="15.0" layoutY="273.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="..." />
       <Button layoutX="15.0" layoutY="327.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="124.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="..." />

@@ -4,25 +4,160 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #178534; " xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pratica3324.HelloController">
+<AnchorPane prefHeight="440.0" prefWidth="955.0" style="-fx-background-color: #178534; " xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pratica3324.GiocatoriController">
     <children>
-        <Label layoutX="15.0" layoutY="14.0" prefHeight="29.0" prefWidth="507.0" text="GESTORE SQUADRA DI CALCIO:" textFill="WHITE">
+        <Label layoutX="15.0" layoutY="11.0" prefHeight="29.0" prefWidth="507.0" text="GESTORE SQUADRA DI CALCIO:" textFill="WHITE">
             <font>
                 <Font name="Book Antiqua" size="24.0" />
             </font></Label>
-        <Button layoutX="345.0" layoutY="226.0" mnemonicParsing="false" onAction="#inserisciGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="3" />
-        <Button layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="15.0" layoutY="45.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="345.0" layoutY="244.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="1" />
-        <Button layoutX="446.0" layoutY="226.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="2" />
-        <Button layoutX="346.0" layoutY="330.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="376.0" layoutY="138.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="482.0" layoutY="156.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="346.0" layoutY="45.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="286.0" layoutY="138.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="256.0" layoutY="67.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="434.0" layoutY="73.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
-        <Button layoutX="197.0" layoutY="156.0" mnemonicParsing="false" onAction="#vediGioc" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="Vedi i tuoi giocatori" />
+        <Button layoutX="245.0" layoutY="244.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="15.0" layoutY="110.0" mnemonicParsing="false" onAction="#reload" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="🔃">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+        <Button layoutX="15.0" layoutY="45.0" mnemonicParsing="false" onAction="#backHome" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="🏠">
+         <font>
+            <Font size="25.0" />
+         </font></Button>
+        <Button layoutX="345.0" layoutY="244.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="445.0" layoutY="244.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="346.0" layoutY="330.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="397.0" layoutY="138.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="497.0" layoutY="156.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="339.0" layoutY="45.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="300.0" layoutY="141.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="239.0" layoutY="67.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="439.0" layoutY="67.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="197.0" layoutY="156.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="59.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+
+        <Button layoutX="823.0" layoutY="9.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="693.0" layoutY="332.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="691.0" layoutY="272.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="691.0" layoutY="207.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="691.0" layoutY="142.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="691.0" layoutY="77.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="691.0" layoutY="11.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="823.0" layoutY="270.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="823.0" layoutY="205.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="823.0" layoutY="137.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+        <Button layoutX="823.0" layoutY="75.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="50.0" style="-fx-background-color:#FFFFFF; -fx-background-radius: 100;" text="X" />
+      <Label alignment="CENTER" layoutX="634.0" layoutY="14.0" prefHeight="361.0" prefWidth="29.0" text="PANCH INA" textAlignment="CENTER" textFill="#900000" wrapText="true">
+         <font>
+            <Font name="Book Antiqua" size="34.0" />
+         </font>
+      </Label>
+      <Pane layoutX="604.0" prefHeight="440.0" prefWidth="6.0" style="-fx-background-color: #FFFFFF;" />
+      <Label fx:id="s1" layoutX="239.0" layoutY="130.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+         <font>
+            <Font name="Forte" size="10.0" />
+         </font>
+      </Label>
+        <Label fx:id="p11" layoutX="754.0" layoutY="348.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p10" layoutX="884.0" layoutY="280.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p9" layoutX="884.0" layoutY="221.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p8" layoutX="884.0" layoutY="153.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p7" layoutX="884.0" layoutY="93.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p6" layoutX="884.0" layoutY="27.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p5" layoutX="754.0" layoutY="288.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p4" layoutX="754.0" layoutY="223.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p3" layoutX="754.0" layoutY="153.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p2" layoutX="754.0" layoutY="93.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="p1" layoutX="754.0" layoutY="27.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s11" layoutX="346.0" layoutY="394.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s10" layoutX="445.0" layoutY="314.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s9" layoutX="345.0" layoutY="305.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s8" layoutX="239.0" layoutY="313.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s7" layoutX="497.0" layoutY="223.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s6" layoutX="397.0" layoutY="204.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s5" layoutX="300.0" layoutY="207.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s4" layoutX="197.0" layoutY="223.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s3" layoutX="448.0" layoutY="130.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+        <Label fx:id="s2" layoutX="339.0" layoutY="110.0" prefHeight="17.0" prefWidth="59.0" text="XXXXXXX" textFill="WHITE">
+            <font>
+                <Font name="Forte" size="10.0" />
+            </font>
+        </Label>
+
 
     </children>
 </AnchorPane>

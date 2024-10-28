@@ -1,11 +1,18 @@
 package com.example.pratica3324;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class HelloController {
     private static Giocatore[] squadra = new Giocatore[22];
@@ -16,6 +23,10 @@ public class HelloController {
     private Label labelIn;
     @FXML
     private VBox insertBox;
+
+    //get static
+    public static Giocatore[] getSquadra() { return squadra; }
+    public static int getIndexInseriti() { return indexInseriti; }
 
     @FXML
     public void inserisciGioc() {
@@ -267,5 +278,14 @@ public class HelloController {
                 l1.setText("Capitano nuovo:");
             l2.setText("Nome: "+squadra[Function.controllaCapitani(squadra, indexInseriti)].getNome()+"\t Capitano:"+squadra[Function.controllaCapitani(squadra, indexInseriti)].isCapitano()+"\t Gol:"+squadra[Function.controllaCapitani(squadra, indexInseriti)].getGoal());
         }
+    }
+
+    @FXML
+    private void goToVediGiocatori(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("giocatori-view.fxml"));//Ricarica
+        Scene scene = new Scene(fxmlLoader.load(), 955.0, 440);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
+        stage.setScene(scene);
     }
 }
