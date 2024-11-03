@@ -1,43 +1,63 @@
 package com.example.pratica3324;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class GiocatoriController {
     @FXML
-    private Label s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11;
+    private Pane rootPane;
     @FXML
-    private Label [] squadraTitolareSchermo;
+    private ComboBox s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11;
     @FXML
-    private Label p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
+    private ComboBox [] squadraTitolareSchermo;
     @FXML
-    private Label [] panchinariSchermo;
+    private ComboBox p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
+    @FXML
+    private ComboBox [] panchinariSchermo;
 
+    private static Giocatore[] predisposizioneSelezionata = new Giocatore[22];
     private Giocatore [] squadra;
     private int indexInseriti;
+    private static boolean isDoingARefactoring=false;
 
     @FXML
-    public void initialize(){
-        squadraTitolareSchermo=setArray();
-        panchinariSchermo =setArrayP();
-        squadra=HelloController.getSquadra();
-        indexInseriti=HelloController.getIndexInseriti();
+    public void initialize() {
+        // Inizializzo array vari e variabili di servizio
+        squadraTitolareSchermo = setArray();
+        panchinariSchermo = setArrayP();
+        squadra = HelloController.getSquadra();
+        indexInseriti = HelloController.getIndexInseriti();
 
-        inserimentoSquadra();
-        inserimentoPanchinari();
+        // Popolo combobox con tutti i giocatori
+        popolaComboBoxConTuttiIGiocatori();
+
+        // Carica la predisposizione salvata o imposta la configurazione iniziale
+        if (!isDoingARefactoring) {
+            inserimentoTitolari(squadraTitolareSchermo, squadra);
+            inserimentoPanchinari(panchinariSchermo, squadra);
+            isDoingARefactoring = true;
+        } else {
+            // Carica la configurazione salvata in predisposizioneSelezionata
+            inserimentoPosizionato(predisposizioneSelezionata);
+        }
     }
 
-    private Label [] setArray(){
-        Label [] squadraTitolare=new Label[11];
+
+    private ComboBox [] setArray(){
+        ComboBox [] squadraTitolare=new ComboBox[11];
         for (int i=0;i<10;i++){
-            squadraTitolare[i]=new Label();
+            squadraTitolare[i]=new ComboBox();
         }
         squadraTitolare[0]=s1;
         squadraTitolare[1]=s2;
@@ -52,10 +72,10 @@ public class GiocatoriController {
         squadraTitolare[10]=s11;
         return squadraTitolare;
     }
-    private Label [] setArrayP(){
-        Label [] panchinari=new Label[11];
+    private ComboBox [] setArrayP(){
+        ComboBox [] panchinari=new ComboBox[11];
         for (int i=0;i<10;i++){
-            panchinari[i]=new Label();
+            panchinari[i]=new ComboBox();
         }
         panchinari[0]=p1;
         panchinari[1]=p2;
@@ -72,27 +92,109 @@ public class GiocatoriController {
     }
 
     @FXML
-    public  void inserimentoSquadra(){
-        if (this.indexInseriti!=0){
-            //Delimito inserimento della squadra
-            int giocPresenti=0;
-            if (this.indexInseriti<=11)
-                giocPresenti=this.indexInseriti;
-            else if (this.indexInseriti>11)
-                giocPresenti=11;
+    public void puliziaCombo(ComboBox [] comboInEsame){
+        for (int i = 0; i < comboInEsame.length; i++) {
+            comboInEsame[i].getItems().clear();
+        }
+    }
+    @FXML
+    public void inserimentoTitolari(ComboBox [] titolari, Giocatore [] squadra) {
+        if (this.indexInseriti != 0) {
+            int giocPresenti = Math.min(this.indexInseriti, 11); // Limito a massimo 11 giocatori come in una squadra reale
+            for (int i = 0; i < giocPresenti; i++) {
+                titolari[i].getSelectionModel().select(squadra[i].getNome());
+            }
+        }
+    }
 
-            for (int i=0;i<giocPresenti;i++){
-                squadraTitolareSchermo[i].setText(squadra[i].getNome());
+    @FXML
+    public void inserimentoPanchinari(ComboBox [] panchinari, Giocatore [] squadra) {
+        if (this.indexInseriti > 11) {
+            int numPanchinari = this.indexInseriti - 11; // Giocatori extra da inserire in panchina
+            for (int i = 0; i < numPanchinari; i++) {
+                panchinari[i].getSelectionModel().select(squadra[i+11].getNome());
             }
         }
     }
     @FXML
-    public void inserimentoPanchinari(){;
-        if (this.indexInseriti!=0 && this.indexInseriti>11){
-            for (int i=0;i<(this.indexInseriti-11);i++){
-                panchinariSchermo[i].setText(squadra[i+11].getNome());
+    public void inserimentoPosizionato(Giocatore [] predisposizioneSelezionata) {
+        for (int i = 0; i < squadraTitolareSchermo.length; i++) {
+            if (predisposizioneSelezionata[i]!=null)
+                squadraTitolareSchermo[i].getSelectionModel().select(predisposizioneSelezionata[i].getNome());
+        }
+        for (int i = 0; i < panchinariSchermo.length; i++) {
+            if (predisposizioneSelezionata[i+11]!=null)
+                panchinariSchermo[i].getSelectionModel().select(predisposizioneSelezionata[i+11].getNome());
+        }
+    }
+
+    @FXML
+    public void popolaComboBoxConTuttiIGiocatori() {
+        puliziaCombo(squadraTitolareSchermo);
+        puliziaCombo(panchinariSchermo);
+
+        for (int i=0;i<indexInseriti;i++) {
+            String nomeGiocatore = squadra[i].getNome();
+            for (ComboBox comboBox : squadraTitolareSchermo) {
+                if (!comboBox.getItems().contains(nomeGiocatore)) {
+                    comboBox.getItems().add(nomeGiocatore);
+                }
+            }
+            for (ComboBox comboBox : panchinariSchermo) {
+                if (!comboBox.getItems().contains(nomeGiocatore)) {
+                    comboBox.getItems().add(nomeGiocatore);
+                }
             }
         }
+        for (ComboBox comboBox : squadraTitolareSchermo) {
+            comboBox.getItems().add(" ");
+        }
+        for (ComboBox comboBox : panchinariSchermo) {
+            comboBox.getItems().add(" ");
+        }
+    }
+
+    @FXML
+    public void salvaPredisposizione() {
+        // Salva la formazione selezionata nei titolari
+        for (int i = 0; i < squadraTitolareSchermo.length; i++) {
+            String nomeSelezionato = (String) squadraTitolareSchermo[i].getValue();
+            predisposizioneSelezionata[i] = trovaGiocatorePerNome(nomeSelezionato);
+        }
+
+        // Salva la formazione selezionata nei panchinari
+        for (int i = 0; i < panchinariSchermo.length; i++) {
+            String nomeSelezionato = (String) panchinariSchermo[i].getValue();
+            predisposizioneSelezionata[i + 11] = trovaGiocatorePerNome(nomeSelezionato);
+        }
+
+        // Conferma il salvataggio e mostra il messaggio di conferma
+        isDoingARefactoring = true;  // Imposta il flag per ricaricare la formazione salvata
+        mostraMessaggioConferma();
+    }
+
+    private Giocatore trovaGiocatorePerNome(String nome) {
+        for (int i=0;i<indexInseriti;i++) {
+            if (squadra[i].getNome().equals(nome)) {
+                return squadra[i];
+            }
+        }
+        return null;
+    }
+
+    public void mostraMessaggioConferma() {
+        Label messaggioConferma = new Label("Effettuato con successo");
+        messaggioConferma.setStyle("-fx-background-color: #00FF00; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10px;");
+        messaggioConferma.setTextFill(Color.WHITE);
+        messaggioConferma.setOpacity(0.9);
+        messaggioConferma.setLayoutX(19);
+        messaggioConferma.setLayoutY(370);
+
+        rootPane.getChildren().add(messaggioConferma);
+
+        PauseTransition pausa = new PauseTransition(Duration.seconds(3));
+        pausa.setOnFinished(event -> rootPane.getChildren().remove(messaggioConferma));
+        pausa.play();
     }
 
     @FXML
