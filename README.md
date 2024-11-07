@@ -1,2 +1,2 @@
 > [!WARNING]
-> Non completato
+> Vedi descrizione ultimo commit prima di questo ovviamente
