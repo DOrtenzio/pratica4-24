@@ -26,8 +26,9 @@ public class GiocatoriController {
     @FXML
     private ComboBox [] panchinariSchermo;
 
+
     private static Giocatore[] predisposizioneSelezionata = new Giocatore[22];
-    private Giocatore [] squadra;
+    private Giocatore [] squadra1;
     private int indexInseriti;
     private static boolean isDoingARefactoring=false;
 
@@ -36,22 +37,27 @@ public class GiocatoriController {
         // Inizializzo array vari e variabili di servizio
         squadraTitolareSchermo = setArray();
         panchinariSchermo = setArrayP();
-        squadra = HelloController.getSquadra();
-        indexInseriti = HelloController.getIndexInseriti();
+        squadra1 = Squadra.getSquadra();
+        indexInseriti = Squadra.getIndexInseriti();
+        System.out.println(indexInseriti);
 
         // Popolo combobox con tutti i giocatori
         popolaComboBoxConTuttiIGiocatori();
 
         // Carica la predisposizione salvata o imposta la configurazione iniziale
         if (!isDoingARefactoring) {
-            inserimentoTitolari(squadraTitolareSchermo, squadra);
-            inserimentoPanchinari(panchinariSchermo, squadra);
-            isDoingARefactoring = true;
+            inserimentoTitolari(squadraTitolareSchermo, squadra1);
+            inserimentoPanchinari(panchinariSchermo, squadra1);
+            if (this.indexInseriti > 0) {
+                isDoingARefactoring = true;
+                mostraMessaggioConferma();
+            }
         } else {
             // Carica la configurazione salvata in predisposizioneSelezionata
             inserimentoPosizionato(predisposizioneSelezionata);
         }
     }
+
 
 
     private ComboBox [] setArray(){
@@ -134,7 +140,7 @@ public class GiocatoriController {
         puliziaCombo(panchinariSchermo);
 
         for (int i=0;i<indexInseriti;i++) {
-            String nomeGiocatore = squadra[i].getNome();
+            String nomeGiocatore = squadra1[i].getNome();
             for (ComboBox comboBox : squadraTitolareSchermo) {
                 if (!comboBox.getItems().contains(nomeGiocatore)) {
                     comboBox.getItems().add(nomeGiocatore);
@@ -175,15 +181,15 @@ public class GiocatoriController {
 
     private Giocatore trovaGiocatorePerNome(String nome) {
         for (int i=0;i<indexInseriti;i++) {
-            if (squadra[i].getNome().equals(nome)) {
-                return squadra[i];
+            if (squadra1[i].getNome().equals(nome)) {
+                return squadra1[i];
             }
         }
         return null;
     }
 
     public void mostraMessaggioConferma() {
-        Label messaggioConferma = new Label("Effettuato con successo");
+        Label messaggioConferma = new Label("Formazione salvata");
         messaggioConferma.setStyle("-fx-background-color: #00FF00; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10px;");
         messaggioConferma.setTextFill(Color.WHITE);
         messaggioConferma.setOpacity(0.9);
